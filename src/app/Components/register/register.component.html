@@ -1,0 +1,76 @@
+<br> <br> <br> <br>
+<div class="container d-flex align-items-center justify-content-center " style="font-weight: bolder; font-size: 40px;">
+  Add user</div>
+<div class="container d-flex align-items-center justify-content-center vh-100">
+  <div class="card-body">
+    <div class="row">
+      <div class="col-md-4">
+        <!-- Image -->
+        <img src="../../../assets/signup-image.jpg" class="img-fluid" alt="Sign Up Image">
+      </div>
+      <div class="col-md-8">
+        <!-- Form -->
+        <form (ngSubmit)="addNewUser()" #signUpForm="ngForm">
+          <!-- Username -->
+          <div class="form-group row mb-2">
+            <label for="name" class="col-md-4 col-form-label">Username</label>
+            <div class="col-md-8">
+              <input type="text" class="form-control" name="name" id="name" placeholder="Username (required)" required
+                minlength="3" [(ngModel)]="user.name" #usernameInput="ngModel"
+                [ngClass]="{'is-invalid': (usernameInput.touched || usernameInput.dirty) && usernameInput.invalid}">
+              <span class="invalid-feedback">
+                <span *ngIf="usernameInput.errors?.['required']">Username is required</span>
+                <span *ngIf="usernameInput.errors?.['minlength']">Username must be at least 3 characters</span>
+              </span>
+            </div>
+          </div>
+
+          <!-- Email -->
+          <div class="form-group row mb-2">
+            <label class="col-md-4 col-form-label" for="email">Email</label>
+            <div class="col-md-8">
+              <input class="form-control" id="email" type="email" placeholder="Email (required)" required email
+                name="email" [(ngModel)]="user.email" #emailInput="ngModel"
+                [ngClass]="{'is-invalid': (emailInput.touched || emailInput.dirty) && !emailInput.valid}" />
+              <span class="invalid-feedback">
+                <span *ngIf="emailInput.errors?.['required']">Email is required</span>
+                <span *ngIf="emailInput.errors?.['email']">Email must contain @</span>
+              </span>
+
+            </div>
+          </div>
+
+          <!-- Password -->
+          <div class="form-group row mb-2">
+            <label class="col-md-4 col-form-label" for="password">Password</label>
+            <div class="col-md-8">
+              <input class="form-control" id="password" type="password" placeholder="Password (required)" required
+                name="password" [(ngModel)]="user.password" #passwordInput="ngModel"
+                [ngClass]="{'is-invalid': (passwordInput.touched || passwordInput.dirty) && passwordInput.invalid}" />
+              <span class="invalid-feedback">
+                <span *ngIf="passwordInput.errors?.['required']">Password is required</span>
+              </span>
+            </div>
+          </div>
+
+          <!-- Role -->
+          <div class="form-group row mb-2">
+            <label class="col-md-4 col-form-label" for="role">Role</label>
+            <div class="col-md-8">
+              <input class="form-control" id="role" type="text" placeholder="Role" name="role"
+                [(ngModel)]="user.role" />
+
+            </div>
+          </div>
+
+          <!-- Submit Button -->
+          <div class="form-group row mb-2">
+            <div class="col-md-8 offset-md-4">
+              <button type="submit" class="btn btn-success" [disabled]="signUpForm.invalid">Submit</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

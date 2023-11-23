@@ -1,0 +1,37 @@
+<!-- edituser.component.html -->
+<br> <br> <br> <br> 
+
+<div class="container"> 
+  <div class="card mb-5">
+    <div class="card-header">
+      Edit Msg
+    </div>
+    <div class="card-body">
+      <form (ngSubmit)="updateMsg()" #editMsgForm="ngForm">
+        <div class="form-group row mb-2">
+          <label for="title" class="col-md-2 col-form-label">Title</label>
+          <div class="col-md-8">
+            <input
+              type="text"
+              class="form-control"
+              name="content"
+              id="content"
+              required
+              minlength="3"
+              [(ngModel)]="msg.content" 
+              #contentInput="ngModel"
+              [ngClass]="{'is-invalid': (contentInput.touched || contentInput.dirty) && contentInput.invalid}" />
+  
+            <span class="invalid-feedback">
+              <span *ngIf="contentInput.errors?.['required']">post is required</span>
+              <span *ngIf="contentInput.errors?.['minlength']"> post must be at least 3 characters</span>
+            </span>
+          </div>
+        </div>
+  
+        <button type="submit" class="btn btn-dark" [disabled]="editMsgForm.invalid">Update</button>
+      </form>
+    </div>
+  </div> 
+  
+</div>

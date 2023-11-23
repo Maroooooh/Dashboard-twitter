@@ -1,0 +1,68 @@
+<!-- <p>forms works!</p> -->
+<!-- Search  -->
+<br> <br> <br> <br>
+<div class="col-md-5 mx-auto">
+  <div class="input-group">
+    <input class="form-control border-end-0 border rounded-pill border-dark" type="text" id="example-search-input" #inputValue>
+    <span class="input-group-append">
+      <button class="btn btn-outline-secondary bg-white border-bottom-0 border rounded-pill border-dark ms-n5" type="button" (click)="search(inputValue.value)">
+        <i class="fa fa-search"></i>
+      </button>
+    </span>
+  </div>
+</div>
+
+   
+<!-- forms.component.html -->
+ <br><br>
+
+ <div class="tableposts container">
+  <div class="card">
+    <div class="card-header" style="font-size: x-large;">
+      Posts 
+    </div>
+    <div class="card-body">
+      <table class="table  table-hover">
+        <thead class="thead-dark">
+          <tr>
+            <!-- <th>ID</th> -->
+            <th>Title</th>
+            <th>Author</th>
+            <th>Replies</th>
+        
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let post of filteredPosts">
+            <!-- <td>{{ post._id }}</td> -->
+            <td>
+              {{ post.title }}
+              
+       
+            </td>
+            <td>{{ post.userId.name }}</td>
+            <td>
+              <ul>
+                <li *ngFor="let reply of post.replies">
+                  ({{ reply.postedBy.name }}) reply: {{ reply.text }}
+                  <!-- <td> <i class="fas fa-edit" (click)="editReply(post, reply._id)"></i></td> -->
+                  <td>   <i class="fas fa-trash text-danger" (click)="deleteReply(post._id, reply._id)"></i>
+                  
+                </li>
+              </ul>
+            </td>
+            
+            <td>
+              <i class="fas fa-trash text-danger" (click)="deletePost(post._id)"></i>
+            </td>
+            <td>
+              <i class="fas fa-edit" (click)="editPost(post)"></i>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+

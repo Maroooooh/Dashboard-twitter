@@ -1,0 +1,56 @@
+
+
+<br><br> <br> <br>
+<div class="col-md-5 mx-auto">
+  <div class="input-group">
+    <input class="form-control border-end-0 border rounded-pill border-dark" type="text" id="example-search-input" #inputValue>
+    <span class="input-group-append">
+      <button class="btn btn-outline-secondary bg-white border-bottom-0 border rounded-pill border-dark ms-n5" type="button" (click)="search(inputValue.value)">
+        <i class="fa fa-search"></i>
+      </button>
+    </span>
+  </div>
+</div>
+
+
+  <br> <br>
+  <div class="container"> 
+    <div class="card tablemsgs">
+      <div class="card-header" style="font-size: x-large;">
+        Messages 
+      </div>
+      <div class="card-body">
+        <div class="table-container">
+          <table class="table table-hover">
+            <thead>
+              <tr>
+                <!-- <th>ID</th> -->
+                <th>Sender</th>
+                <th>Content</th>
+                <th>Receiver</th>
+                
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let msg of filteredMsgs">
+                <!-- <td>{{ msg._id }}</td> -->
+                <td>{{ msg.senderId.name }}</td>
+                <td>
+                  {{ msg.content }}
+                </td>
+                <td>{{ msg.recipientId.name }}</td>
+                <td>
+                  <i class="fas fa-trash text-danger" (click)="deleteMsg(msg._id)"></i>
+                </td>
+                <td> 
+                   <i class="fas fa-edit" (click)="editMsg(msg)"></i>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    
+  </div>
+  

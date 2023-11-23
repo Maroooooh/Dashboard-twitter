@@ -1,0 +1,27 @@
+.row>* {
+  padding-right: 0;
+  padding-left: 0;
+}
+
+// app-vertical-navbar {
+//   position: fixed;
+//   height: 100vh;
+//   top: 0;
+//   left: 0;
+//   bottom: 0;
+//   background-color: rgb(232, 236, 237); 
+//   color: #fff;
+//   padding: 20px;
+// }
+
+
+app-horizontal-navbar {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  color: #fff;
+  // padding: 10px;
+  z-index: 1000; 
+}
+
+

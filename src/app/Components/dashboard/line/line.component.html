@@ -1,0 +1,40 @@
+<div class="container">
+  <div class="row" style="margin-bottom: 30px;">
+
+    <div class="four col-3" [@counterAnimation]="counterAnimationState" (click)="startCounterAnimation()">
+      <div class="counter-box">
+        <i class="fas fa-user"></i>
+        <span class="counter">{{cnt}}</span>
+        <p>Registered Members</p>
+      </div>
+    </div> 
+
+    <div class="col-4 mx-auto text-center"
+      style="height: 350px; width: 350px; background-color: blueviolet; position: relative;">
+      <echarts [options]="option" class="demo-chart" style="height: 330px; width: 330px;"></echarts>
+    </div>
+
+    <div class="col-4 mx-auto text-center"
+      style="height: 350px; width: 350px; background-color: rgb(226, 150, 43); position: relative;">
+      <echarts [options]="option1" class="demo-chart" style="height: 330px; width: 330px;"></echarts>
+    </div>
+  
+  </div>
+</div>
+<div class="container">
+  <div class="row" style="margin-bottom: 30px;">
+   
+    <div class="four col-3" [@counterAnimation]="counterAnimationState" (click)="startCounterAnimation()">
+      <div class="counter-box">
+        <i class="bi bi-chat-dots"></i>
+        <span class="counter">{{cntpost}}</span>
+        <p>Posts done</p>
+      </div>
+    </div> 
+
+    <div class="col-4 mx-auto text-center"
+      style="height: 350px; width: 350px; background-color: rgb(226, 43, 180); position: relative;">
+      <echarts [options]="option2" class="demo-chart" style="height: 330px; width: 330px;"></echarts>
+    </div>
+  </div>
+</div>

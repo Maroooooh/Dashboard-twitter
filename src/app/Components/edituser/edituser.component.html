@@ -1,0 +1,34 @@
+<!-- edituser.component.html -->
+<br> <br> <br> <br> 
+
+<div class="card container">
+  <div class="card-header">
+    Edit User
+  </div>
+  <div class="card-body">
+    <form (ngSubmit)="updateUser()" #editUserForm="ngForm">
+      <div class="form-group row mb-2">
+        <label for="name" class="col-md-2 col-form-label">Username</label>
+        <div class="col-md-8">
+          <input
+            type="text"
+            class="form-control"
+            name="name"
+            id="name"
+            required
+            minlength="3"
+            [(ngModel)]="user.name" 
+            #usernameInput="ngModel"
+            [ngClass]="{'is-invalid': (usernameInput.touched || usernameInput.dirty) && usernameInput.invalid}" />
+
+          <span class="invalid-feedback">
+            <span *ngIf="usernameInput.errors?.['required']">Username is required</span>
+            <span *ngIf="usernameInput.errors?.['minlength']">Username must be at least 3 characters</span>
+          </span>
+        </div>
+      </div>
+
+      <button type="submit" class="btn btn-dark" [disabled]="editUserForm.invalid" >Update</button>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,46 @@
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    width: 200vh;
+    background-color: #f8f9fa; /* Change this to your desired background color */
+  }
+  
+  .card {
+    width: 1000px;
+    /* Add more styling as needed */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .card-header {
+    background-color: #007bff; /* Change this to your desired header background color */
+    color: #fff;
+    font-weight: bold;
+  }
+  
+  .card-body {
+    padding: 20px;
+  }
+  
+  .form-group {
+    margin-bottom: 1rem;
+  }
+  
+  .invalid-feedback {
+    color: #dc3545; /* Change this to your desired invalid feedback color */
+  }
+  
+  .btn-success {
+    background-color: rgb(18, 25, 33); /* Change this to your desired button color */
+    color: #fff;
+  }
+  
+  .btn-success:hover {
+    background-color: #000109; /* Change this to your desired button hover color */
+  }
+  
+
+  i{
+    color: #dc3545;
+  }
