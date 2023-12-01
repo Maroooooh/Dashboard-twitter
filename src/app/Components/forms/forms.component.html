@@ -1,6 +1,6 @@
-<!-- <p>forms works!</p> -->
-<!-- Search  -->
-<br> <br> <br> <br>
+
+<br> <br> 
+<div *ngIf="isEditFormVisible" class="overlay" > </div>
 <div class="col-md-5 mx-auto">
   <div class="input-group">
     <input class="form-control border-end-0 border rounded-pill border-dark" type="text" id="example-search-input" #inputValue>
@@ -12,57 +12,103 @@
   </div>
 </div>
 
-   
-<!-- forms.component.html -->
  <br><br>
 
- <div class="tableposts container">
-  <div class="card">
-    <div class="card-header" style="font-size: x-large;">
-      Posts 
-    </div>
+
+<div class="tableposts container">
+  <div class="card shadow">
     <div class="card-body">
-      <table class="table  table-hover">
+      <div *ngIf="loading" class="d-flex justify-content-center">
+        <div class="spinner-border" role="status">
+          <span class="sr-only">Loading...</span>
+        </div>
+      </div>
+      <table *ngIf="!loading" class="table table-hover">
         <thead class="thead-dark">
           <tr>
-            <!-- <th>ID</th> -->
-            <th>Title</th>
+            <th>ID</th>
             <th>Author</th>
-            <th>Replies</th>
-        
+            <th>Title</th>
+           
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let post of filteredPosts">
-            <!-- <td>{{ post._id }}</td> -->
-            <td>
-              {{ post.title }}
-              
-       
-            </td>
+          <tr *ngFor="let post of filteredPosts | paginate : {itemsPerPage: tableSize, currentPage: page, totalItems: count}; let i = index">
+            <td>{{ i + 1 }}</td>
             <td>{{ post.userId.name }}</td>
-            <td>
-              <ul>
-                <li *ngFor="let reply of post.replies">
-                  ({{ reply.postedBy.name }}) reply: {{ reply.text }}
-                  <!-- <td> <i class="fas fa-edit" (click)="editReply(post, reply._id)"></i></td> -->
-                  <td>   <i class="fas fa-trash text-danger" (click)="deleteReply(post._id, reply._id)"></i>
-                  
-                </li>
-              </ul>
+            <td (click)="toggleReplies(post)">
+              {{ post.title }}
+              <span class="clickable-icon" *ngIf="post.showReplies">▼</span>
+              <span class="clickable-icon" *ngIf="!post.showReplies">▶</span>
+              <!-- {{ post.showReplies }} Add this log -->
             </td>
-            
             <td>
               <i class="fas fa-trash text-danger" (click)="deletePost(post._id)"></i>
             </td>
             <td>
               <i class="fas fa-edit" (click)="editPost(post)"></i>
             </td>
+            <td *ngIf="post?.showReplies" class="replies-row" colspan="3">
+              <!-- <td></td> -->
+            
+                <div *ngFor="let reply of post?.replies">
+                  <p>
+                    <strong>{{ reply.postedBy.name }}:</strong> {{ reply.text }}
+                    <i class="fas fa-trash text-danger" (click)="deleteReply(post._id , reply._id)"></i>
+
+                  </p>
+                  
+                </div>
+              </td>
+            
           </tr>
+          
         </tbody>
       </table>
+      <div *ngIf="!loading">
+        <pagination-controls previousLabel="prev" nextLabel="next" (pageChange)="onTableDataChange($event)"></pagination-controls>
+      </div>
     </div>
   </div>
 </div>
 
+<div *ngIf="isEditFormVisible" class="edit-form-section" >
+
+  <div class="container"> 
+    <div class="card mb-5">
+      <div class="card-header">
+        Edit Post
+        <button type="button" class="close" aria-label="Close" (click)="closeEditForm()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="card-body">
+        <form (ngSubmit)="updatePost()" #editPostForm="ngForm">
+          <div class="form-group row mb-2">
+            <label for="title" class="col-md-2 col-form-label">Title</label>
+            <div class="col-md-8">
+              <input
+                type="text"
+                class="form-control"
+                name="title"
+                id="title"
+                required
+                minlength="3"
+                [(ngModel)]="post.title" 
+                #titleInput="ngModel"
+                [ngClass]="{'is-invalid': (titleInput.touched || titleInput.dirty) && titleInput.invalid}" />
+    
+              <span class="invalid-feedback">
+                <span *ngIf="titleInput.errors?.['required']">post is required</span>
+                <span *ngIf="titleInput.errors?.['minlength']"> post must be at least 3 characters</span>
+              </span>
+            </div>
+          </div>
+    
+          <button type="submit" class="btn btn-dark" [disabled]="editPostForm.invalid">Update</button>
+        </form>
+      </div>
+    </div> 
+   </div>
+</div>
 

@@ -12,23 +12,67 @@ import Swal from 'sweetalert2';
 })
 export class FormsComponent implements OnInit {
    Posts : IPosts[] = []; 
+  //  post: any;
    filteredPosts : IPosts[] = [] ;
+   loading: boolean = true;
+   page : number = 1 ;
+   count : number = 0 ;
+   tableSize:number= 10;
+   tableSizes:any = [5,10,15,20];
    constructor (public postsapiservice : PostsService, private router : Router){
 
    }
   ngOnInit(): void {
+    this.PostsList();
+  }
+  PostsList() :void {
     this.postsapiservice.getAllPosts().subscribe({
       next:(data)=>{
         console.log(data);
         this.Posts = data
         this.filteredPosts =  [...this.Posts]; 
-        
+        this.loading = false;
+      
       },
       error:(err)=>{
         console.log(err);
+        this.loading = false;
         
       }
     })
+  }
+  onTableDataChange (event : any){
+    this.page = event ;
+    this.PostsList() ;
+  }
+
+  onTableSizeChange(event:any) :void{
+    this.tableSize =event.target.value ;
+    this.page =1 ;
+    this.PostsList () ;
+  }
+  toggleReplies(post: any) {
+    post.showReplies = !post.showReplies;
+  
+  }
+  isEditFormVisible = false;
+  post : any ;
+  editPost(post:IPosts) {
+    this.post = post;
+    this.isEditFormVisible = true;
+  }
+
+  updatePost(){
+    this.isEditFormVisible = false;
+    this.postsapiservice.updatePost(this.post).subscribe({
+      next: () => {
+        console.log('Post updated successfully');
+        this.router.navigate(['/posts']);
+      },
+      error: (err) => {
+        console.log('Error updating post', err);
+      }
+    });
   }
   deletePost(postId: string): void {
     Swal.fire({
@@ -59,7 +103,10 @@ export class FormsComponent implements OnInit {
     
   }
   
-  
+  closeEditForm() {
+    this.isEditFormVisible = false;
+  }
+
   search(text: string): void {
     const searchTerm = text.toLowerCase().trim();
 
@@ -88,9 +135,7 @@ export class FormsComponent implements OnInit {
         reply.postedBy.name.toLowerCase().includes(term)
     );
   }
-  editPost(post:IPosts){
-      this.router.navigate(['/editpost', post._id] ); 
-  }  
+ 
   editReply(post:IPosts , replyId : string  ){
       this.router.navigate(['/editreply' , replyId]) ;
   }

@@ -23,7 +23,6 @@ export class LoginComponent implements OnInit {
     // Call the login function in your service
     this.userAuthService.login(this.user.email, this.user.password, this.user.role).subscribe(
       () => {
-        // If login is successful, navigate to a different route (e.g., dashboard)
         const Toast = Swal.mixin({
           toast: true,
           position: "top-end",
@@ -41,8 +40,10 @@ export class LoginComponent implements OnInit {
         });
         // this.userAuthService.isUserLogged = true ; 
         this.userAuthService.logged = true ;
+        this.userLog = this.userAuthService.isUserLogged;
+  
         this.router.navigate(['/dashboard']);
-        
+
       },
       (error) => {
         Swal.fire({
@@ -51,18 +52,9 @@ export class LoginComponent implements OnInit {
           text: "Your Email or password went wrong!",
           footer: '<a href="#">Why do I have this issue?</a>'
         });
-        // console.error('Login failed:', error);
-      
-        // if (error instanceof HttpErrorResponse) {
-        //   // console.error(`Status: ${error.status}, Message: ${error.message}`);
-        //   if (error.status === 401) {
-        //     // console.error('Unauthorized. Incorrect email or password.');
-          
-        //   } 
-        // }
+        
       }
     );
   }
-  
   
 }

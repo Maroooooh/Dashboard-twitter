@@ -1,12 +1,93 @@
-<div class="container-fluid">
-  <!-- Horizontal Navbar -->
-  <div class="row">
-    <div class="col">
-      <app-horizontal-navbar></app-horizontal-navbar>
+<div  class="container-fluid">
+  <div class="row" >
+    <div class="nver" *ngIf="userLog" [ngClass]="isNavbarCollapsed ? 'col-lg-1' : 'col-lg-2'">
+        <nav [ngClass]="{ 'collapsed': isNavbarCollapsed }"
+          class="navbar vertical-navbar bg-dark text-light d-flex flex-column align-items-center justify-content-center">
+         <div >
+          <button (click)="toggleNavbar()" class="collapse-button">
+            <i [ngClass]="isNavbarCollapsed ? 'fas fa-angle-left' : 'fas fa-angle-right'"></i>
+          </button>
+          <div class="profile-section text-center">
+            <img src={{Iam.profilePicture}} alt="Profile Picture" class="profile-pic">
+            <div class="profile-info" [ngClass]="{ 'hidden-text': isNavbarCollapsed }">
+              <p class="mb-0">{{Iam.name}}</p>
+              <p class="mb-0">{{Iam.role}}</p>
+            </div>
+          </div>
+          <hr>
+           </div>
+        
+          <div class="nav-item1">
+            <a class="nav-link" routerLink="/dashboard">
+              <div class="nav-item-icon">
+                <i class="fas fa-tachometer-alt text-white"></i>
+              </div>
+              <div  class = "texted" [ngClass]="{ 'hidden-text': isNavbarCollapsed }">Dashboard</div>
+            </a>
+          </div>
+          <div class="nav-item1">
+            <a class="nav-link" routerLink="/charts">
+              <div class="nav-item-icon">
+                <i class="fas fa-chart-bar text-white"></i>
+              </div>
+              <div class = "texted" [ngClass]="{ 'hidden-text': isNavbarCollapsed }">Charts</div>
+            </a>
+          </div>
+          <div class="nav-item1">
+            <a class="nav-link" routerLink="/users">
+              <div class="nav-item-icon">
+              <i class="fas fa-table mt-2 text-white"></i></div>
+              <div class = "texted" [ngClass]="{ 'hidden-text': isNavbarCollapsed }">Users </div>
+             
+            </a>
+          </div>
+          <div class="nav-item1">
+            <a class="nav-link" routerLink="/posts">
+              <div class="nav-item-icon">
+              <i class="fas fa-edit mt-2 text-white"></i></div>
+              <div class = "texted" [ngClass]="{ 'hidden-text': isNavbarCollapsed }"> Posts </div>
+             
+            </a>
+          </div>
+          <div class="nav-item1">
+            <a class="nav-link" routerLink="/msgs">
+              <div class="nav-item-icon">
+              <i class="fas fa-calendar-alt mt-2 text-white"></i></div>
+              <div class = "texted" [ngClass]="{ 'hidden-text': isNavbarCollapsed }"> Messages</div>
+            
+            </a>
+          </div>
+          <div class="nav-item1">
+            <a class="nav-link" routerLink="/notifications">
+              <div class="nav-item-icon">
+              <i class="fas fa-bell mt-2 text-white"></i></div>
+              <div class = "texted" [ngClass]="{ 'hidden-text': isNavbarCollapsed }">Notifications </div>
+             
+            </a>
+          </div>
+          <div class="nav-item1" (click)="logOutFunc()" [hidden]="!userLog">
+            <a class="nav-link">
+              <div class="nav-item-icon">
+                <i class="fas fa-sign-out-alt  text-white"></i>
+              </div>
+              <div class = "texted" [ngClass]="{ 'hidden-text': isNavbarCollapsed }">Logout</div>
+            </a>
+          </div>
+          <div class="nav-item1">
+            <a class="nav-link" routerLink="/login" [hidden]="userLog">
+              <div class="nav-item-icon">
+                <i class="fas fa-sign-in  text-white"></i>
+              </div>
+              <div class = "texted" [ngClass]="{ 'hidden-text': isNavbarCollapsed }">Login</div>
+            </a>
+          </div>
+          
+        </nav>
+      
     </div>
-  </div>
-  <div class="row">
-    <div class="col">
+    
+    
+    <div class="col-lg-10">
       <div class="mycontain">
         <router-outlet></router-outlet>
       </div>

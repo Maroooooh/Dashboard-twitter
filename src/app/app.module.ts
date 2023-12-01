@@ -10,8 +10,6 @@ import { MapsComponent } from './Components/maps/maps.component';
 import { FormsComponent } from './Components/forms/forms.component';
 import { TableComponent } from './Components/table/table.component';
 import { CalenderComponent } from './Components/calender/calender.component';
-import { VerticalNavbarComponent } from './Components/navbar/vertical-navbar/vertical-navbar.component';
-import { HorizontalNavbarComponent } from './Components/navbar/horizontal-navbar/horizontal-navbar.component';
 import { HttpClientModule} from '@angular/common/http'
 import { NgxEchartsModule } from 'ngx-echarts';
 import { RegisterComponent } from './Components/register/register.component';
@@ -26,6 +24,9 @@ import { EditmsgComponent } from './Components/editmsg/editmsg.component';
 import { NotificationsComponent } from './Components/notifications/notifications.component';
 import { LineComponent } from './Components/dashboard/line/line.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatPaginatorModule } from '@angular/material/paginator'
+import { MatTableModule } from '@angular/material/table';
+import { NgxPaginationModule } from 'ngx-pagination';
 @NgModule({
   declarations: [
     AppComponent,
@@ -36,8 +37,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     FormsComponent,
     TableComponent,
     CalenderComponent,
-    VerticalNavbarComponent,
-    HorizontalNavbarComponent,
     LineComponent,
     RegisterComponent,
     LoginComponent,
@@ -53,6 +52,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     HttpClientModule,
     FormsModule,
     BrowserAnimationsModule,
+    NgxPaginationModule,
     NgxEchartsModule.forRoot({
      
       echarts: () => import('echarts'),

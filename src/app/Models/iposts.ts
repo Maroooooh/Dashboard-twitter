@@ -5,6 +5,10 @@ export interface IPosts {
     title: string;
     userId: IUsers;
     replies: { _id : string; text: string; postedBy: IUsers}[];
-  
+    likes:{userid : string}[] ;
+    reposts: {userid : string} [] ;
+    saved:{userid:string}[];
+    showReplies?: boolean;
+    
   }
   

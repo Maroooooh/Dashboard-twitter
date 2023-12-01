@@ -61,3 +61,40 @@ input:checked + .slider:before {
 .slider.round:before {
   border-radius: 50%;
 }
+/* your-main-component.component.css */
+
+.edit-form-section {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 900px;
+  transform: translate(-50%, -50%);
+  background-color: rgb(255, 255, 255);
+  padding: 20px;
+  border: 1px solid #ccc;
+  box-shadow: 0 0 50px rgba(0, 0, 0, 0.1);
+  z-index: 9999;
+}
+.overlay {
+  position: fixed;
+  // display: none;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0,0,0,0.5);
+  z-index: 2;
+  cursor: pointer;
+}
+.edit-form-section .card-header {
+  position: relative;
+}
+
+.edit-form-section .close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+}

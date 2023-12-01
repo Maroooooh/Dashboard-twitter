@@ -38,7 +38,7 @@ export class UsersService {
   }
   
   updateUser(user: IUsers): Observable<IUsers> {
-    return this.httpclient.patch<IUsers>(`${environment.BaseApiUrl}/users/${user._id}`, 
+    return this.httpclient.patch<IUsers>(`${environment.BaseApiUrl}/users/editprofile/${user._id}`, 
     JSON.stringify(user), this.httpheader);
   }
   deleteUser(userId: string): Observable<any> {

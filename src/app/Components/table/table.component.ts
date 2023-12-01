@@ -1,9 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { tap } from 'rxjs';
+import { Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { IUsers } from 'src/app/Models/iusers';
 import { UsersService } from 'src/app/Services/users.service';
 import Swal from 'sweetalert2';
-
+import { MatPaginator, MatPaginatorModule, PageEvent } from '@angular/material/paginator'
+import { MatTableModule } from '@angular/material/table';
+import { PaginationInstance } from 'ngx-pagination';
 @Component({
   selector: 'app-table',
   templateUrl: './table.component.html',
@@ -11,21 +14,41 @@ import Swal from 'sweetalert2';
 })
 export class TableComponent implements OnInit {
   Users: IUsers[] = [];
-  filteredUsers: IUsers[] = []; // Add a new array for filtered users
+  filteredUsers: IUsers[] = [];
   isNameAsc = true;
+  page : number = 1 ;
+  count : number = 0 ;
+  tableSize:number= 10;
+  tableSizes:any = [5,10,15,20];
+  loading: boolean = true;
   constructor(public usersapiservice: UsersService, private router: Router) {}
 
   ngOnInit(): void {
+    this.UsersList() ;
+  }
+  UsersList() :void {
     this.usersapiservice.getAllUsers().subscribe({
       next: (data) => {
         console.log(data);
         this.Users = data;
         this.filteredUsers = data; // Initialize filteredUsers with all users initially
+        this.loading = false;
       },
       error: (err) => {
         console.log(err);
+        this.loading = false;
       }
     });
+  }
+  onTableDataChange (event : any){
+    this.page = event ;
+    this.UsersList() ;
+  }
+
+  onTableSizeChange(event:any) :void{
+    this.tableSize =event.target.value ;
+    this.page =1 ;
+    this.UsersList () ;
   }
 
   deleteUser(userid: string): void {
@@ -67,8 +90,26 @@ export class TableComponent implements OnInit {
     );
   }
 
-  editUser(user: IUsers): void {
-    this.router.navigate(['/edituser', user._id]);
+  isEditFormVisible = false;
+  user : any ;
+  editUser(user: IUsers) {
+    this.user = user;
+    this.isEditFormVisible = true;
+  }
+
+  updateUser() {
+  
+    this.isEditFormVisible = false;
+    this.usersapiservice.updateUser(this.user).subscribe({
+      next: () => {
+        console.log('User updated successfully');
+        this.router.navigate(['/users']);
+      },
+      error: (err) => {
+        console.log('Error updating user', err);
+      }
+    });
+  
   }
   updateUserStatus(event: any, user: IUsers) {
     this.usersapiservice.updatetoggleStatus(user).subscribe({
@@ -94,5 +135,9 @@ export class TableComponent implements OnInit {
       }
     });
   }
+  closeEditForm() {
+    this.isEditFormVisible = false;
+  }
+  
 }
 

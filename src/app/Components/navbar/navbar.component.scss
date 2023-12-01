@@ -2,26 +2,98 @@
   padding-right: 0;
   padding-left: 0;
 }
-
-// app-vertical-navbar {
-//   position: fixed;
-//   height: 100vh;
-//   top: 0;
-//   left: 0;
-//   bottom: 0;
-//   background-color: rgb(232, 236, 237); 
-//   color: #fff;
-//   padding: 20px;
-// }
-
-
-app-horizontal-navbar {
+.vertical-navbar {
   position: fixed;
-  width: 100%;
   top: 0;
-  color: #fff;
-  // padding: 10px;
+  left: 0;
+  height: 100vh;
+  color: #f3e8e8;
+  font-size: 20px;
+  transition: width 0.3s ease-in-out;
   z-index: 1000; 
 }
 
+.hidden-text {
+  display: none;
+}
+.navbar-brand {
+  font-size: 20px;
+  text-decoration: none;
+  color: #f9f7f7;
+}
+.navbar-brand:hover {
+  text-decoration: underline;
+}
+.nav-item1 {
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px;
+  
+}
+.texted{
+  height: 30px;
+  width: 120px;
+}
+
+.nav-item-content i {
+  margin-right: 8px; /* Adjust the margin as needed */
+}
+
+.nav-item-text {
+  color: #fff; /* Add your text color */
+}
+.nav-item1 a {
+  display: flex;
+  align-items: center;
+}
+.nav-item1:hover {
+    background-color: #343a40; 
+}
+.profile-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-bottom: 1px solid #555; /* Add a border between profile and navigation items */
+}
+.profile-pic {
+  width: 50px; /* Adjust the width and height as needed */
+  height: 50px;
+  border-radius: 50%;
+}
+.vertical-navbar.collapsed {
+  width: 80px;
+  display: flex;
+  flex-direction: center;
+  align-items: center;
+  background-color: #212529;
+}
+.vertical-navbar:not(.collapsed) {
+  width: 200px; 
+ 
+}
+.sidebar {
+  height: 100vh;
+  top: 0;
+  background-color: #212529;
+  transition: left 0.3s ease;
+}
+// .navbar {
+//   position: relative;
+// }
+
+.collapse-button {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 20px;
+}
+.nav-item-icon {
+  margin-right: 5px;
+}
+// .mycontain{
+
+// }
 
