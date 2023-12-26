@@ -1,22 +1,23 @@
-<!-- <p>login works!</p> -->
-<br> <br> <br> <br>
-<div class="container col-5" style="background-color: blueviolet;"> 
-  <div class="container d-flex align-items-center justify-content-center flex-column" style="font-weight: bolder; font-size: 30px;">
-    Log in 
-  </div>
-  
-  <div class="container d-flex align-items-center justify-content-center vh-100">
-    <div class="card-body">
-      <div class="row">
-        <!-- Form on the left side -->
-        <div>
+<div class="row "><div class="col-3 "> </div> </div>
+
+
+<div class="container d-flex align-items-center justify-content-center vh-100" style="width: 500px;">
+  <div class="card " style="background-color: #F4D8D8;">
+    <br>
+    <div class="text-center" style="font-weight: bolder; font-size: 30px;">
+      Log in
+    </div>
+   
+    <div class="card-body d-flex align-items-center justify-content-center">
+     
           <form (ngSubmit)="loginFunc()" #loginForm="ngForm">
-  
-            <!-- Email -->
+            <div class=" d-none d-md-block">
+              <img src="../../../assets/signin-image.jpg" alt="Signup Image" class="img-fluid">
+            </div>
             <div class="form-group row mb-2">
-              <label class=" col-form-label" for="email">Email</label>
+              <label class="col-form-label" for="email">Email</label>
               <div>
-                <input class="form-control" id="email" type="email" placeholder="Email (required)" required email
+                <input class="col-lg-5 form-control" id="email" type="email" placeholder="Email (required)" required email
                   name="email" [(ngModel)]="user.email" #emailInput="ngModel"
                   [ngClass]="{'is-invalid': (emailInput.touched || emailInput.dirty) && !emailInput.valid}" />
                 <span class="invalid-feedback">
@@ -27,7 +28,7 @@
             </div>
             <div class="form-group row mb-2">
               <label class="col-form-label" for="password">Password</label>
-              <div >
+              <div>
                 <input class="form-control" id="password" type="password" placeholder="Password (required)" required
                   name="password" [(ngModel)]="user.password" #passwordInput="ngModel"
                   [ngClass]="{'is-invalid': (passwordInput.touched || passwordInput.dirty) && passwordInput.invalid}" />
@@ -36,21 +37,15 @@
                 </span>
               </div>
             </div>
-            
+
             <button type="submit" class="btn btn-success" [disabled]="loginForm.invalid">Submit</button>
           </form>
-        </div>
 
-
-  
-        <!-- Image on the right side -->
-        <div class="col-lg-4 d-none d-md-block">
-          <img src="../../../assets/signin-image.jpg" alt="Signup Image" class="img-fluid">
-        </div>
-      </div>
+          <!-- <div class="col-lg-3 d-none d-md-block">
+            <img src="../../../assets/signin-image.jpg" alt="Signup Image" class="img-fluid">
+          </div> -->
+        
+      
     </div>
   </div>
-  
-    
-  
 </div>

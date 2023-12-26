@@ -309,7 +309,7 @@ export class LineComponent implements OnInit {
       } else {
         clearInterval(intervalId);
       }
-    }, 500);
+    }, 700);
     this.postsapiservice.getAllPosts().subscribe({
       next: (data) => {
         console.log(data);
@@ -414,7 +414,7 @@ const seriesData = sortedPosts.map(([_, likeCount]) => likeCount);
       } else {
         clearInterval(intervalId2);
       }
-    }, 500);
+    }, 700);
     let i3 = 0;
     const intervalId3 = setInterval(() => {
       if (i3 <= this.cntlikes) {
@@ -422,7 +422,7 @@ const seriesData = sortedPosts.map(([_, likeCount]) => likeCount);
       } else {
         clearInterval(intervalId3);
       }
-    }, 500);
+    }, 700);
     let i4 = 0;
     const intervalId4 = setInterval(() => {
       if (i4 <= this.cntreposts) {
@@ -430,7 +430,7 @@ const seriesData = sortedPosts.map(([_, likeCount]) => likeCount);
       } else {
         clearInterval(intervalId4);
       }
-    }, 500);
+    }, 700);
   } 
   
   counterAnimationState = 'start';

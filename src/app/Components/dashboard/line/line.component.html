@@ -1,89 +1,103 @@
-<h1>Welcome to your Dashboard</h1>
 
-<div class="container">
+<div class="container" >
   <div class="row" >
-    <div class="col-lg-3 col-md-6" [@userCounterAnimation]="counterAnimationState" (click)="startCounterAnimation()" style="margin-bottom: 20px;">
-      <div class="card shadow" style="border-radius: 10px; background-color: #ffffff; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
-        <div class="card-body text-center" style="display: flex; flex-direction: column; align-items: center;">
-          <i class="fas fa-user" style="font-size: 24px; color: #000000; margin-bottom: 10px;"></i>
-          <span class="counter" style="font-size: 32px; font-weight: bold; color: #000000; margin-bottom: 5px;">{{cnt}}</span>
-          <p style="font-size: 14px; color: #000000;">Registered Members</p>
+    <div class="col-lg-3 col-md-6" [@userCounterAnimation]="counterAnimationState" (click)="startCounterAnimation()" style="margin-bottom: 20px; width: 280px;">
+      <div class="card shadow" style="border-radius: 10px; background-color: #AEDFF7; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+        <div class="card-body text-center" style="display: flex; align-items: center; justify-content: space-between;">
+          <div style="flex: 1; padding: 5px;">
+            <i class="fas fa-user" style="font-size: 70px; color: #000000;"></i>
+          </div>
+          <div style="flex: 1; text-align: center; padding: 5px;">
+            <span class="counter" style="font-size: 32px; font-weight: bold; color: #000000; margin-bottom: 5px; margin-top: 20px;">{{cnt}}</span>
+            <p style="font-size: 20px; color: #000000; margin-top: 10px;">Members</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-3 col-md-6" [@postCounterAnimation]="counterAnimationState" (click)="startCounterAnimation()" style="margin-bottom: 20px;width: 280px;">
+      <div class="card shadow" style="border-radius: 10px; background-color: #C1D9CA; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+        <div class="card-body text-center" style="display: flex; align-items: center; justify-content: space-between;">
+          <div style="flex: 1; padding: 5px;">
+            <i class="fas fa-edit" style="font-size: 70px; color: #000000; margin-bottom: 10px;"></i>
+          </div>
+          <div style="flex: 1; text-align: center; padding: 5px;">
+            <span class="counter" style="font-size: 32px; font-weight: bold; color: #000000; margin-bottom: 5px;margin-top: 20px;">{{cntpost}}</span>
+            <p style="font-size: 20px; color: #000000; margin-top: 10px;">Tweets</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-3 col-md-6" [@likesCounterAnimation]="counterAnimationState" (click)="startCounterAnimation()" style="margin-bottom: 20px;width: 280px;">
+      <div class="card shadow" style="border-radius: 10px; background-color: #D8BFD8; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+        <div class="card-body text-center" style="display: flex; align-items: center; justify-content: space-between;">
+          <div style="flex: 1; padding: 5px;">
+            <i class="fas fa-heart" style="font-size: 70px; color: #000000; margin-bottom: 10px;"></i>
+          </div>
+          <div style="flex: 1; text-align: center; padding: 5px;">
+            <span class="counter" style="font-size: 32px; font-weight: bold; color: #000000; margin-bottom: 5px;margin-top: 20px;">{{cntlike}}</span>
+            <p style="font-size: 20px; color: #000000; margin-top: 10px;">Likes</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-3 col-md-6" [@repostsCounterAnimation]="counterAnimationState" (click)="startCounterAnimation()" style="margin-bottom: 20px;width: 280px;">
+      <div class="card shadow" style="border-radius: 10px; background-color:#C4A4A3; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+        <div class="card-body text-center" style="display: flex; align-items: center; justify-content: space-between;">
+          <div style="flex: 1; padding: 5px;">
+            <i class="fas fa-retweet" style="font-size: 70px; color: #000000; margin-bottom: 10px;"></i>
+          </div>
+          <div style="flex: 1; text-align: center; padding: 5px;">
+            <span class="counter" style="font-size: 32px; font-weight: bold; color: #000000; margin-bottom: 5px;margin-top: 20px;">{{cntrepost}}</span>
+            <p style="font-size: 20px; color: #000000; margin-top: 10px;">Retweets</p>
+          </div>
         </div>
       </div>
     </div>
   
-
-    <div class="col-lg-3 col-md-6" [@postCounterAnimation]="counterAnimationState" (click)="startCounterAnimation()" style="margin-bottom: 20px;">
-      <div class="card shadow" style="border-radius: 10px; background-color: #ffffff; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
-        <div class="card-body text-center" style="display: flex; flex-direction: column; align-items: center;">
-          <i class="fas fa-edit" style="font-size: 24px; color: #000000; margin-bottom: 10px;"></i>
-          <span class="counter" style="font-size: 32px; font-weight: bold; color: #000000; margin-bottom: 5px;">{{cntpost}}</span>
-          <p style="font-size: 14px; color: #000505;">Tweets</p>
-        </div>
-      </div>
-    </div>
-    <div class="col-lg-3 col-md-6" [@likesCounterAnimation]="counterAnimationState" (click)="startCounterAnimation()" style="margin-bottom: 20px;">
-      <div class="card shadow" style="border-radius: 10px; background-color: #ffffff; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
-        <div class="card-body text-center" style="display: flex; flex-direction: column; align-items: center;">
-          <i class="fas fa-heart" style="font-size: 24px; color: #000000; margin-bottom: 10px;"></i>
-          <span class="counter" style="font-size: 32px; font-weight: bold; color: #000000; margin-bottom: 5px;">{{cntlike}}</span>
-          <p style="font-size: 14px; color: #000505;">Likes</p>
-        </div>
-      </div>
-    </div>
-    <div class="col-lg-3 col-md-6" [@repostsCounterAnimation]="counterAnimationState" (click)="startCounterAnimation()" style="margin-bottom: 20px;">
-      <div class="card shadow" style="border-radius: 10px; background-color: #ffffff; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
-        <div class="card-body text-center" style="display: flex; flex-direction: column; align-items: center;">
-          <i class="fas fa-retweet" style="font-size: 24px; color: #000000; margin-bottom: 10px;"></i>
-          <span class="counter" style="font-size: 32px; font-weight: bold; color: #000000; margin-bottom: 5px;">{{cntrepost}}</span>
-          <p style="font-size: 14px; color: #000505;">Retweets</p>
-        </div>
-      </div>
-    </div>
-    <div class="col-lg-5 col-md-6 mx-auto" style="margin-bottom: 20px;">
-      <div class="card shadow" style="height: 350px; width: 450px;">
+    <div class="col-lg-5 col-md-6 mx-auto" style="margin-bottom: 20px;display: flex; flex-direction: column; align-items: center; ">
+      <div class="card shadow" style="height: 350px; width: 540px; background-color: #ffffff;">
         <div class="card-body text-center">
-          <echarts [options]="option" class="demo-chart" style="height: 330px; width: 450px;"></echarts>
+          <echarts [options]="option" class="demo-chart" style="height: 330px; width: 540px;"></echarts>
         </div>
       </div>
     </div>
 
-    <div class="col-lg-5 col-md-6 mx-auto" style="margin-bottom: 20px;">
-      <div class="card shadow" style="height: 350px; width: 450px;">
+    <div class="col-lg-5 col-md-6 mx-auto" style="margin-bottom: 20px;display: flex; flex-direction: column; align-items: center;">
+      <div class="card shadow" style="height: 350px; width: 540px; background-color: #ffffff;">
         <div class="card-body text-center">
-          <echarts [options]="option1" class="demo-chart" style="height: 330px; width: 450px;"></echarts>
+          <echarts [options]="option1" class="demo-chart" style="height: 330px; width: 540px;"></echarts>
         </div>
       </div>
     </div>
 
-    <div class="col-lg-5 col-md-6 mx-auto" style="margin-bottom: 20px;">
-      <div class="card shadow" style="height: 350px; width: 450px;">
+    <div class="col-lg-5 col-md-6 mx-auto" style="margin-bottom: 20px;display: flex; flex-direction: column; align-items: center;">
+      <div class="card shadow" style="height: 350px; width: 540px;background-color: #ffffff;">
         <div class="card-body text-center">
-          <echarts [options]="option2" class="demo-chart" style="height: 330px; width: 450px;"></echarts>
+          <echarts [options]="option2" class="demo-chart" style="height: 330px; width: 540px;"></echarts>
         </div>
       </div>
     </div>
-    <div class="col-lg-5 col-md-6 mx-auto" style="margin-bottom: 20px;">
-      <div class="card shadow" style="height: 350px; width: 450px;">
+    <div class="col-lg-5 col-md-6 mx-auto" style="margin-bottom: 20px;display: flex; flex-direction: column; align-items: center;">
+      <div class="card shadow" style="height: 350px; width: 540px;background-color: #ffffff;">
         <div class="card-body text-center">
-          <echarts [options]="option3" class="demo-chart" style="height: 330px; width: 450px;"></echarts>
+          <echarts [options]="option3" class="demo-chart" style="height: 330px; width: 540px;"></echarts>
         </div>
       </div>
     </div>
   
     
-    <div class="col-7 mx-auto" style="margin-bottom: 20px;">
-      <div class="card shadow" style="height: 400px; width: 800px;">
+    <div class="col-lg-12 mx-auto" style="margin-bottom: 20px;">
+      <div class="card shadow" style="height: 400px; width: 1100px;background-color:  #ffffff;">
         <div class="card-body text-center">
-          <echarts [options]="option4" class="demo-chart" style="height: 390px; width: 750px;"></echarts>
+          <echarts [options]="option4" class="demo-chart" style="height: 390px; width: 1100px;"></echarts>
         </div>
       </div>
     </div>
 
-    <div class="col-7 mx-auto" style="margin-bottom: 20px;">
-      <div class="card shadow" style="height: 400px; width: 800px;">
+    <div class="col-lg-12 mx-auto" style="margin-bottom: 20px;">
+      <div class="card shadow" style="height: 400px; width: 1100px; background-color: #ffffff;">
         <div class="card-body text-center">
-          <echarts [options]="option5" class="demo-chart" style="height: 390px; width: 800px;"></echarts>
+          <echarts [options]="option5" class="demo-chart" style="height: 390px; width: 1100px;"></echarts>
         </div>
       </div>
     </div>

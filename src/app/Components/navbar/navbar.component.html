@@ -1,6 +1,6 @@
-<div  class="container-fluid">
+<div  class="container-fluid" *ngIf="userLog">
   <div class="row" >
-    <div class="nver" *ngIf="userLog" [ngClass]="isNavbarCollapsed ? 'col-lg-1' : 'col-lg-2'">
+    <div class="nver"  [ngClass]="isNavbarCollapsed ? 'col-lg-1' : 'col-lg-2'">
         <nav [ngClass]="{ 'collapsed': isNavbarCollapsed }"
           class="navbar vertical-navbar bg-dark text-light d-flex flex-column align-items-center justify-content-center">
          <div >
@@ -25,14 +25,14 @@
               <div  class = "texted" [ngClass]="{ 'hidden-text': isNavbarCollapsed }">Dashboard</div>
             </a>
           </div>
-          <div class="nav-item1">
+          <!-- <div class="nav-item1">
             <a class="nav-link" routerLink="/charts">
               <div class="nav-item-icon">
                 <i class="fas fa-chart-bar text-white"></i>
               </div>
               <div class = "texted" [ngClass]="{ 'hidden-text': isNavbarCollapsed }">Charts</div>
             </a>
-          </div>
+          </div> -->
           <div class="nav-item1">
             <a class="nav-link" routerLink="/users">
               <div class="nav-item-icon">
@@ -49,7 +49,13 @@
              
             </a>
           </div>
-          <div class="nav-item1">
+
+
+
+          
+
+
+          <!-- <div class="nav-item1">
             <a class="nav-link" routerLink="/msgs">
               <div class="nav-item-icon">
               <i class="fas fa-calendar-alt mt-2 text-white"></i></div>
@@ -64,7 +70,7 @@
               <div class = "texted" [ngClass]="{ 'hidden-text': isNavbarCollapsed }">Notifications </div>
              
             </a>
-          </div>
+          </div> -->
           <div class="nav-item1" (click)="logOutFunc()" [hidden]="!userLog">
             <a class="nav-link">
               <div class="nav-item-icon">
@@ -93,4 +99,11 @@
       </div>
     </div>
   </div>
+</div>
+
+
+
+
+<div class="container"*ngIf="!userLog">
+     <app-login></app-login>
 </div>
